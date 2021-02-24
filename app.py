@@ -29,22 +29,22 @@ from sqlalchemy import create_engine, func
 # db = SQLAlchemy(app)
 
 # create an engine for SqlDB
-engine = create_engine("postgressql://postgres:postgres@aws-gt-dataviz-finalpg-001.cloqvwuqbywl.us-east-1.rds.amazonaws.com/spotify_db")
+# engine = create_engine("postgressql://postgres:postgres@aws-gt-dataviz-finalpg-001.cloqvwuqbywl.us-east-1.rds.amazonaws.com/spotify_db")
 
-# Reflect DB into ORM classes
-Base = automap_base()
-Base.prepare(engine, reflect = True)
+# # Reflect DB into ORM classes
+# Base = automap_base()
+# Base.prepare(engine, reflect = True)
 
-# table references
-tracks = Base.classes.tracks
+# # table references
+# tracks = Base.classes.tracks
 
-session = Session(engine)
+# session = Session(engine)
 
 
-####################
-#   Flask Setup
-####################
-app = Flask(__name__)
+# ####################
+# #   Flask Setup
+# ####################
+# app = Flask(__name__)
 
 # Create route that renders index.html template
 
