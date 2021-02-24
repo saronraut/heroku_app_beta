@@ -62,6 +62,17 @@ img{
     display:block;
 }
 
+#Btn{
+    color: white;
+    background-color:  #9cdc6c;
+    border-radius: 8px;
+    border-color: black;
+}
+
+
+/* .table{
+    color: white
+} */
 
 
 

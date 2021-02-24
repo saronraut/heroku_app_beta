@@ -1,5 +1,6 @@
 # importing necessary libraries
-from models import create_classes
+import pandas as pd
+import numpy as np
 import os
 from flask import (
     Flask,
@@ -9,30 +10,52 @@ from flask import (
     redirect
 )
 
-####################
-#   Flask Setup
-####################
-app = Flask(__name__)
+##############################
+#import SqlAlchemy#
+##############################
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, func
 
 ######################
 #   DatabaseSetup
 ######################
+# from flask_sqlalchemy import SQLAlchemy
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgressql://postgres:postgres@aws-gt-dataviz-finalpg-001.cloqvwuqbywl.us-east-1.rds.amazonaws.com/spotify_db'
+# # Remove tracking modifications
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# # insert db name here
+# db = SQLAlchemy(app)
 
-from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get()
+# create an engine for SqlDB
+engine = create_engine("postgressql://postgres:postgres@aws-gt-dataviz-finalpg-001.cloqvwuqbywl.us-east-1.rds.amazonaws.com/spotify_db")
 
-# Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Reflect DB into ORM classes
+Base = automap_base()
+Base.prepare(engine, reflect = True)
 
-db = SQLAlchemy(app)
+# table references
+tracks = Base.classes.tracks
 
-# insert db name here
+session = Session(engine)
+
+
+####################
+#   Flask Setup
+####################
+app = Flask(__name__)
 
 # Create route that renders index.html template
 
 @app.route("/")
 def home():
     return render_template("index.html")
+
+@app.route("/predictor")
+def predict():
+    return render_template("predictor.html")
+
 
 
 if __name__ == "__main__":
