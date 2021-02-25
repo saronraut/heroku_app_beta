@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/static/css/style.css" />
+    <!-- <script src="../d3.min.js"></script> -->
 
     <title>Predictor</title>
   </head>
@@ -52,35 +53,25 @@
             id="exampleDataList"
             placeholder="Type Artist Name..."
           />
-          <datalist id="datalistOptions">
+          <datalist id="filter-artist">
             <option value="The Beattles"></option>
             <option value="Rihanna"></option>
             <option value="Elton John"></option>
             <option value="Earth, Wind & Fire"></option>
             <option value="AC/DC"></option>
           </datalist>
+          <input type="Submit" name="Submit" id="Btn-artist" />
         </div>
         <div class="col-sm-8">
           <label class="visually-hidden" for="specificSizeSelect"
             >Preference</label
           >
-          <select class="form-select" id="specificSizeSelect">
+          <select class="form-select" id="filter-songs">
+            <!-- needs to make the filter update after identifying artist  -->
             <option selected>Choose...</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
-          </select>
-        </div>
-
-        <div class="col-sm-4">
-          <label class="visually-hidden" for="specificSizeSelect"
-            >Preference</label
-          >
-          <select class="form-select" id="specificSizeSelect">
-            <option selected1>Genre</option>
-            <option value1="1">One</option>
-            <option value1="2">Two</option>
-            <option value1="3">Three</option>
           </select>
         </div>
         <div>
@@ -103,5 +94,7 @@
         <tbody></tbody>
       </table>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+    <script src="/static/js/app.js"></script>
   </body>
 </html>

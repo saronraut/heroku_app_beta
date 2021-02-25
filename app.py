@@ -1,6 +1,4 @@
 # importing necessary libraries
-import pandas as pd
-import numpy as np
 import os
 from flask import (
     Flask,
@@ -9,6 +7,12 @@ from flask import (
     request,
     redirect
 )
+from db import data
+
+####################
+#   Flask Setup
+####################
+app = Flask(__name__)
 
 ##############################
 #import SqlAlchemy#
@@ -28,23 +32,6 @@ from sqlalchemy import create_engine, func
 # # insert db name here
 # db = SQLAlchemy(app)
 
-# create an engine for SqlDB
-# engine = create_engine("postgressql://postgres:postgres@aws-gt-dataviz-finalpg-001.cloqvwuqbywl.us-east-1.rds.amazonaws.com/spotify_db")
-
-# # Reflect DB into ORM classes
-# Base = automap_base()
-# Base.prepare(engine, reflect = True)
-
-# # table references
-# tracks = Base.classes.tracks
-
-# session = Session(engine)
-
-
-# ####################
-# #   Flask Setup
-# ####################
-# app = Flask(__name__)
 
 # Create route that renders index.html template
 
@@ -56,6 +43,10 @@ def home():
 def predict():
     return render_template("predictor.html")
 
+
+@app.route("/data")
+def trackdata():
+    return jsonify(data=data)
 
 
 if __name__ == "__main__":
