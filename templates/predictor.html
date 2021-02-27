@@ -21,7 +21,7 @@
       <a href="#visuals">Visuals</a>
       <a href="/predictor">Predictor</a>
       <a href="/stats">Stats</a>
-  </div> 
+    </div>
 
     <h1>It's time for your predictions</h1>
 
@@ -35,18 +35,19 @@
         width="420"
         height="340"
         class="video"
-      <source 
+        <source
         src="/static/images/futureman.mp4"
         type="video/mp4"
       >
       </iframe>
     </div>
+
     <div class="container">
       <form class="col-sm-8">
         <div>
           <label for="exampleDataList" class="form-label"
-            ><h2>Find Your Next Song</h2></label
-          >
+            ><h2>Find Your Next Song</h2>
+          </label>
           <input
             class="form-control"
             list="datalistOptions"
@@ -54,29 +55,26 @@
             placeholder="Type Artist Name..."
           />
           <datalist id="filter-artist">
-            <option value="The Beattles"></option>
             <option value="Rihanna"></option>
             <option value="Elton John"></option>
             <option value="Earth, Wind & Fire"></option>
             <option value="AC/DC"></option>
           </datalist>
-          <input type="Submit" name="Submit" id="Btn-artist" />
+          <input type="Submit" name="Artist Search" id="Btn-artist" value="Search Artist" />
         </div>
         <div class="col-sm-8">
           <label class="visually-hidden" for="specificSizeSelect"
-            >Preference</label
-          >
+            >Preference
+          </label>
           <select class="form-select" id="filter-songs">
-            <!-- needs to make the filter update after identifying artist  -->
+            needs to make the filter update after identifying artist
             <option selected>Choose...</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
         </div>
-        <div>
-          <input type="Submit" name="Submit" id="Btn" />
-        </div>
+        <input type="Submit" name="Submit" id="Btn" value="Get Funky!!" />
       </form>
     </div>
     <div class="container">
@@ -94,7 +92,10 @@
         <tbody></tbody>
       </table>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+    <!-- <script src="/static/js/app_copy.js"></script> -->
+    
     <script src="/static/js/app.js"></script>
   </body>
 </html>

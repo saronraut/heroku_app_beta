@@ -9,7 +9,7 @@ con = psycopg2.connect(
 )
 
 cur = con.cursor()
-cur.execute("select artists, name, year, popularity, valence, energy from tracks limit 20")
+cur.execute("select artists, name, year, popularity, valence, energy from tracks")
 
 rows = cur.fetchall()
 data = []

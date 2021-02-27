@@ -62,7 +62,7 @@ img{
     display:block;
 }
 
-#Btn{
+#Btn, #Btn-artist{
     color: white;
     background-color:  #9cdc6c;
     border-radius: 8px;
