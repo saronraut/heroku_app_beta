@@ -30,30 +30,33 @@ d3.json("/data").then(data =>{
             d3.event.preventDefault();
 
             // Save the elemnet, value, and id of the filter that was changed
-            let filterNames = ["#exampleDataList"] ;
-            // console.log("before filternames")
+            let filterNames = ["#exampleDataList", "filter-songs"] ;
+            console.log("before filternames")
             let filters = {};
-            // console.log(filterNames)
+            console.log(filterNames)
+
+            let dataArray = Object.values(data);
+            console.log(dataArray);
 
             for (fltrid of filterNames){
                 let changedElement = d3.select(fltrid)
                 console.log(`this is id ${fltrid}`)
                 // needs to be an input value in here instead of values
                 let elementValue = changedElement.property("value");
-                console.log(elementValue)
-                let filterId = changedElement.attr("id");
-                console.log(`filters=${fltrid}`)
+                console.log('the value of the fileter is:', elementValue)
+                // let filterId = changedElement.attr("id");
+                // console.log(`filters=${fltrid}`)
 
-                var returned_songs = []
+                // var returned_songs = []
                 // var something = data.includes(elementValue)
-                console.log("randomwords", Object.values(data));
-                let dataArray = Object.values(data);
-                console.log(dataArray);
-                let filterData = dataArray[0].filter(item => item.artist_name.toLowerCase().includes(elementValue.toLowerCase()))
-                // let filterData = dataArray[0].filter(item => item.artist_name === elementValue)
-                buildTable(filterData)
+                // console.log("randomwords", Object.values(data));
+                
+                
+                // let filterData = dataArray[0].filter(item => item.artist_name.toLowerCase().includes(elementValue.toLowerCase()))
                 
             }
+
+            // buildTable(filterData)
             
             
         }
@@ -71,18 +74,18 @@ d3.json("/data").then(data =>{
 
             for (fltrid of filterNames){
                 let changedElement = d3.select(fltrid)
-                console.log(`this is id ${fltrid}`)
+                // console.log(`this is id ${fltrid}`)
                 // needs to be an input value in here instead of values
                 let elementValue = changedElement.property("value");
-                console.log(elementValue)
+                // console.log(elementValue)
                 let filterId = changedElement.attr("id");
-                console.log(`filters=${fltrid}`)
+                // console.log(`filters=${fltrid}`)
 
                 var returned_songs = []
                 // var something = data.includes(elementValue)
-                console.log("randomwords", Object.values(data));
+                // console.log("randomwords", Object.values(data));
                 let dataArray = Object.values(data);
-                console.log(dataArray);
+                // console.log(dataArray);
                 let filterData = dataArray[0].filter(item => item.artist_name.toLowerCase().includes(elementValue.toLowerCase()))
                 // let filterData = dataArray[0].filter(item => item.artist_name === elementValue)
                 getSonglist(filterData)
@@ -103,8 +106,8 @@ d3.json("/data").then(data =>{
             d3.select("#filter-songs").html("");
             const dropList = document.querySelector("#filter-songs");
             dropList.innerHTML += `<option selected>Choose A Song</option>`
-            console.log(`printing song list db`)
-            console.log(data);
+            // console.log(`printing song list db`)
+            // console.log(data);
             data.forEach((dataRow)=> {
                 let row = d3.select("#filter-songs")
                 row.append("option").text(dataRow["song_name"])
