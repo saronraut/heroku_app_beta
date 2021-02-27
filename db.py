@@ -9,7 +9,7 @@ con = psycopg2.connect(
 )
 
 cur = con.cursor()
-cur.execute("select artists, name, year, popularity, valence, energy from tracks")
+cur.execute("select artists, name, year, popularity, valence, energy, cluster_label from tracks_wcluster")
 
 rows = cur.fetchall()
 data = []
@@ -20,7 +20,8 @@ for x in rows:
         "year": x[2],
         "popularity": x[3],
         "mood" : x[4],
-        "energy": x[5]
+        "energy": x[5],
+        "cluster_label": x[6]
     })
 
 cur.close

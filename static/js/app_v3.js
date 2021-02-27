@@ -28,35 +28,56 @@ d3.json("/data").then(data =>{
             // this function uses the values of artist and song to get the cluster id
             // prevent auto refresh
             d3.event.preventDefault();
+            
+            // Save the elemnet, value, and id of the filter that was changed
+            // let filterNames = ["#exampleDataList", "#filter-songs"] ;
+            // console.log("before filternames")
+            // let filters = {};
+            // console.log(filterNames)
 
             let dataArray = Object.values(data);
             console.log(dataArray);
 
-            // get artist and song filter values
+            // get artist and song values to use a filters
             artristFilter = d3.select("#exampleDataList").property("value");
             console.log('artistFliter is: ', artristFilter);
 
             songSelected = d3.select("#filter-songs").property("value");
             console.log('songSelected is: ', songSelected);
 
-            // filter data based on artist and song
-            let filterData = dataArray[0].filter(item => ((item.artist_name.toLowerCase().includes(artristFilter.toLowerCase())) & item.song_name == songSelected))
-            console.log('this is to get the cluster number combined filter: ', filterData);
+            let filterData = dataArray[0].filter(item => item.artist_name.toLowerCase().includes(artristFilter.toLowerCase()))
+            filterData = filterData.filter(item => item.song_name == songSelected)
+            console.log('this is to get the cluster number: ', filterData)
 
-            // get cluster label
-            let clusterID = filterData[0].cluster_label;
-            console.log('cluster_label: ', clusterID)
-            //filter data based on cluster label
-            let recList = dataArray[0].filter(item => item.cluster_label == clusterID);
-            console.log('recommendedList:', recList);
+            // for (fltrid of filterNames){
+            //     let changedElement = d3.select(fltrid)
+            //     console.log(`this is id ${fltrid}`)
+            //     console.log('the changedElement is:', changedElement)
+                // needs to be an input value in here instead of values
+                // let elementValue = changedElement.property("value");
+                // console.log('the value of the filter is:', elementValue)
+                // let filterId = changedElement.attr("id");
+                // console.log(`filters=${fltrid}`)
 
-            buildTable(recList);
+                // var returned_songs = []
+                // var something = data.includes(elementValue)
+                // console.log("randomwords", Object.values(data));
+                
+                // let filterData = dataArray[0].filter(item => item.artist_name.toLowerCase().includes(elementValue.toLowerCase())) 
+            // }
+
+            // buildTable(filterData)
+            
+            
         }
 
         function updateFilterList(){
             // This is to update the song list drop-down based on artist entered
             // prevent auto refresh
             d3.event.preventDefault();
+
+            // Save the elemnet, value, and id of the filter that was changed
+            // let filterNames = ["#exampleDataList"] ;
 
             let changedElement = d3.select("#exampleDataList");
             let elementValue = changedElement.property("value");
@@ -65,6 +86,25 @@ d3.json("/data").then(data =>{
             let filterData = dataArray[0].filter(item => item.artist_name.toLowerCase().includes(elementValue.toLowerCase()));
             getSonglist(filterData);
 
+            // for (fltrid of filterNames){
+            //     let changedElement = d3.select(fltrid)
+            //     // console.log(`this is id ${fltrid}`)
+            //     // needs to be an input value in here instead of values
+            //     let elementValue = changedElement.property("value");
+            //     // console.log(elementValue)
+            //     let filterId = changedElement.attr("id");
+            //     // console.log(`filters=${fltrid}`)
+
+            //     var returned_songs = []
+            //     // var something = data.includes(elementValue)
+            //     // console.log("randomwords", Object.values(data));
+            //     let dataArray = Object.values(data);
+            //     // console.log(dataArray);
+            //     let filterData = dataArray[0].filter(item => item.artist_name.toLowerCase().includes(elementValue.toLowerCase()))
+            //     // let filterData = dataArray[0].filter(item => item.artist_name === elementValue)
+            //     getSonglist(filterData)
+                
+            // }
             return;
         }
 
@@ -81,13 +121,14 @@ d3.json("/data").then(data =>{
             data.forEach((dataRow)=> {
                 let row = d3.select("#filter-songs")
                 let option = row.append("option")
-                option.text(dataRow["song_name"]+' - ' +dataRow["artist_name"])
+                option.text(dataRow["song_name"])
                 option.property('value',dataRow["song_name"])
             })
             return;
         }
      
         function buildTable(data) {
+            console.log(data)
             // first,clear out an exisitng data
             tbody.html("");
 
