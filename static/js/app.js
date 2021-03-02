@@ -23,7 +23,7 @@ d3.json("/data").then(data =>{
         d3.selectAll("#Btn").on("click", updateFiltersandBuild);
         d3.selectAll("#Btn-artist").on("click", updateFilterList)
         
-
+        
         function updateFiltersandBuild(){
             // this function uses the values of artist and song to get the cluster id
             // prevent auto refresh
@@ -33,14 +33,14 @@ d3.json("/data").then(data =>{
             console.log(dataArray);
 
             // get artist and song filter values
-            artristFilter = d3.select("#exampleDataList").property("value");
-            console.log('artistFliter is: ', artristFilter);
+            artistFilter = d3.select("#exampleDataList").property("value");
+            console.log('artistFliter is: ', artistFilter);
 
             songSelected = d3.select("#filter-songs").property("value");
             console.log('songSelected is: ', songSelected);
 
             // filter data based on artist and song
-            let filterData = dataArray[0].filter(item => ((item.artist_name.toLowerCase().includes(artristFilter.toLowerCase())) & item.song_name == songSelected))
+            let filterData = dataArray[0].filter(item => ((item.artist_name.toLowerCase().includes(artistFilter.toLowerCase())) & item.song_name == songSelected))
             console.log('this is to get the cluster number combined filter: ', filterData);
 
             // get cluster label

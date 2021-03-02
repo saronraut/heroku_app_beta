@@ -46,6 +46,9 @@ def trackdata():
 def stats():
     return render_template("stats.html")
 
+@app.route("/4nerdz")
+def info():
+    return render_template("4nerdz.html")
 
 if __name__ == "__main__":
     app.run()
