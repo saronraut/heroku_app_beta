@@ -65,7 +65,7 @@ h3{
 }
 
 p{
-    margin-bottom: 15px
+    margin-bottom: 15px;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     color: #f5fcf0;
@@ -103,8 +103,8 @@ h5 {
     font-size: 30px;
     /* font-family: Arial, Helvetica, sans-serif; */
     /* font-size: 20px; */
-    color: #f88794;
-    /* color: indianred; */
+    /* color: #f88794; */
+    color: indianred;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
 }
